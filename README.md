@@ -83,7 +83,8 @@ predicting which clients are more likely to subscribe to their term deposits.
 Management is now interested in finding out how a classification model can lead to certain decision-making processes. 
 
 - Create a classification model in Python. Feel free to use libraries such as SkLearn, Keras/Tensorflow or Pytorch. 
-- Analyse the model and provide insight into which features/variables influence the outcome of the classification the most: on a global level, and specifically for observation #4 and #20.
+- Analyse the model and provide insight into which features/variables influence the outcome of the classification the 
+most: on a global level, and specifically for observation #4 and #20.
 - Develop some form of plot or graph with brief comments on your observations. 
 
 Heads up! Jakob left you a voice message to help you with this task.
@@ -98,3 +99,73 @@ and a local level.
 Getting familiar with the Lime and SHAP libraries will help.
 
 Thanks and catch you later.”
+
+## Task 2
+
+Today, credit is no longer limited to classical bank loans. The rise of e-commerce has increased the demand for new and 
+more flexible credit solutions. The increased demand has been met by new companies from the fintech sector that offer 
+easily accessible online loans to a wide audience. These new business models offer simple solutions, such as flexible 
+payment schedules or buy-now-pay-later, that can be accessed with just a few clicks. 
+
+Online merchants also need new ways to procure capital to manufacture their products, as they receive payment only 
+after their product has been sold. In order to meet increasing demand, new credit offerings have emerged. Repayment of 
+these loans is no longer based on a fixed schedule but instead depends directly on online sales. The loan is paid back 
+in instalments with every sale, and thus payments depend directly on the sales volume. 
+
+Predicting the future cash flows needed for the valuation of a portfolio consisting of these merchant loans is 
+challenging.
+
+Our client is a large global online lending platform that provides loans to both consumers and merchants. These 
+instruments are classified as assets on the balance sheet. 
+
+Our audit colleagues have asked for our help to ensure the balance sheet values are correct. The value of the loan 
+portfolio depends on future cash flows, which are stochastic. 
+
+Our job is to ensure that the client’s portfolio has been valued correctly.
+
+As part of the quantitative finance team, you and Jakob prepare a PowerPoint document containing the results of your 
+portfolio valuation.
+
+As you are supporting the audit colleagues with the audit for the year 2020, the value of the portfolio shall be 
+determined as of 31 December 2020. The following steps will guide you through the valuation:
+
+- Inspect the historical data provided by the client. The data ranges from June 2019 until December 2020. Every month 
+constitutes a vintage and the data includes the loan amount that was originated per vintage, as well as the repayments 
+that have been observed up until and including December 2020 (the vintages are given as rows and the columns specify 
+the period of the repayment). 
+- Based on the provided data, compute the historical repayment percentages, i.e. every repayment’s share of the 
+origination amount. 
+- Compute the expected repayment percentages for all vintages over the lifetime of the loans.
+- From the expected repayment percentages, compute the forecasted cash flows using the origination amounts.
+- Using the assumed discount rate, derive the present value of the forecasted cash flows and of the portfolio. Don’t 
+forget to convert the annual interest rate to a monthly interest rate.
+- The client’s estimate of the portfolio value was CHF 84’993’122.67. How close is this to your own estimate? Compute 
+both the absolute and relative difference. Jakob tells you that the audit team considers any difference smaller than 
+CHF 500’000 to be acceptable given the size of the portfolio. Based on the result of your valuation, conclude whether 
+the difference to the client’s estimate falls below his threshold.
+
+Jakob notes: The portfolio value should be rounded to two decimal places. The slides can be simple as we'll use them 
+internally first. Focus on correct solutions to set up the team with the right insights.
+
+### Assumptions
+
+1. All cash flows are assumed to be paid back over a period of 30 months. Following this assumption, the last cash flow 
+for the July 2020 vintage will be collected in December 2022 and thus there are 24 months that need to be forecasted 
+(from January 2021 until December 2022).
+2. Let 𝑝<sub>𝑖</sub> denote the expected repayment percentage as a share of the origination amount. For the portfolio valuation, 
+assume that the expected repayment percentages are calculated as follows:
+
+
+For the origination month, 𝑖 = 1, the value is already known and fed in. The same holds true for the following 
+month, 𝑖 = 2, except for the last vintage, December 2020, where 𝑝<sub>2</sub> has not yet been observed. For this vintage, 
+assume that the expected repayment percentage for 𝑖 = 2 will be twice the repayment of the first period 
+(𝑝<sub>2</sub> = 2𝑝<sub>1</sub> for the December 2020 vintage).
+
+From the third month until the forecast horizon, 3 ≤ 𝑖 ≤ 30:
+
+$$
+p_i = \max \left\{ p_2 \cdot \ln \left( 1 + \left( 1 - \frac{i - 1}{30} \right) \left( 1 - \sum_{j=1}^{i-1} p_j \right) 
+\right); 0 \right\}
+$$
+
+3. Assume that the forecasted cash flows are discounted with an annual rate of 2.5%.
