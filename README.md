@@ -163,6 +163,6 @@ assume that the expected repayment percentage for 𝑖 = 2 will be twice the rep
 
 From the third month until the forecast horizon, 3 ≤ 𝑖 ≤ 30:
 
-![Equation](https://github.com/naafis/Data-Intelligence/blob/master/CodeCogsEqn.png?raw=true)
+![Equation](https://github.com/naafis/Data-Intelligence/blob/master/CodeCogsEqn.png)
 
 3. Assume that the forecasted cash flows are discounted with an annual rate of 2.5%.
