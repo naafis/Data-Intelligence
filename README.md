@@ -163,9 +163,6 @@ assume that the expected repayment percentage for 𝑖 = 2 will be twice the rep
 
 From the third month until the forecast horizon, 3 ≤ 𝑖 ≤ 30:
 
-$$
-p_i = \max \left\{ p_2 \cdot \ln \left( 1 + \left( 1 - \frac{i - 1}{30} \right) \cdot \left( 1 - \sum_{j=1}^{i-1} p_j \right) \right), 0 \right\}
-$$
-
+![Equation](https://quicklatex.com/cache3/80/ql_1eba1c88d7f62624490f4df08a1e3d80_l3.png)
 
 3. Assume that the forecasted cash flows are discounted with an annual rate of 2.5%.
